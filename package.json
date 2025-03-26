@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -r origin -b gh-pages --dest ."
+    "deploy": "gh-pages -d dist -r https://github.com/Joshualaycoh/Netflix_Clone.git -b gh-pages --dest ."
   },
   "dependencies": {
     "firebase": "^11.2.0",
