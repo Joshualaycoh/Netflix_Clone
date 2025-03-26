@@ -1,17 +1,20 @@
 {
   "name": "netflix-clone",
   "private": true,
+  "homepage": "https://joshualaycoh.github.io/Netflix-Clone/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
-  "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-  "start": "vite preview --port $PORT" 
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -r origin -b gh-pages --dest ."
   },
   "dependencies": {
     "firebase": "^11.2.0",
+    "gh-pages": "^6.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-firebase-hooks": "^5.1.1",
