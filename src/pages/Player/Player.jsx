@@ -6,7 +6,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 const Player = () => {
 
   const navigate = useNavigate()
-
   const {id} = useParams();
 
   const [apiData, setApiData] = useState({
@@ -20,10 +19,10 @@ const Player = () => {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMDRiNTc4MTY2NGJmNWIzMGFlMjJjZTk1OTBkZWY3YyIsIm5iZiI6MTczNzI3MjgwOS4xNzQsInN1YiI6IjY3OGNhZGU4MmU0MTYzNGU1MjY1MGI4ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aGknhzqFP3jMZrcg841WZYWHOUrGb8CIecChzT221Ec'
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`
     }
   };
-  
+
   useEffect(()=> {
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
     .then(res => res.json())
@@ -34,15 +33,15 @@ const Player = () => {
   return (
     <div className='player'>
       <img src={back_arrow_icon} alt="" onClick={()=>{navigate(-2)}} />
-       <iframe width='90%' height='90%'
-        src={`https://www.youtube.com/embed/${apiData.key}`}
-        title='trailer' frameBorder='0' allowFullScreen>
-       </iframe>
-       <div className="player-info">
-        <p>{apiData.published_at.slice(0,10)}</p>
-        <p>{apiData.name}</p>
-        <p>{apiData.type}</p>
-       </div>
+        <iframe width='90%' height='90%'
+          src={`https://www.youtube.com/embed/${apiData.key}`}
+          title='trailer' frameBorder='0' allowFullScreen>
+        </iframe>
+        <div className="player-info">
+         <p>{apiData.published_at.slice(0,10)}</p>
+         <p>{apiData.name}</p>
+         <p>{apiData.type}</p>
+        </div>
     </div>
   )
 }
